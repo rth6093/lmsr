@@ -8,17 +8,15 @@ export default {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
-    extend: {},
+    
+    extend: {
+      colors: {
+        primary: '#d6c315',
+        secondary: '#d66215'
+      },
+    },
   },
-  plugins: [],
-  content: [],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-module.exports = {
-  // other options ...
+
   plugins: [
     require('flowbite/plugin')
   ],

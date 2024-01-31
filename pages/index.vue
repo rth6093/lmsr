@@ -10,14 +10,14 @@
     
     <div class="w-1/2 bg-white min-h-screen">
       <!-- Login Form -->
-      <form class="max-w-sm mx-auto center px-4 pt-4" @submit.prevent="handleSubmit">
+      <form class="max-w-sm mx-auto center px-4 pt-4">
         <div class="mb-5">
           <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your username</label>
-          <input v-model="formData.username" type="text" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your username" required>
+          <input  type="text" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your username" required>
         </div>
         <div class="mb-5">
           <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-          <input v-model="formData.password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your password" required>
+          <input  type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your password" required>
         </div>
         <nuxt-link to="/admin">
          <button type="submit" class="w-full text-white tuto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
@@ -30,46 +30,46 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import backendApi from '~/networkServices/api/backendApi';
-import useAxiosSetup from '~/networkServices/useAxioSetup';
+// import { ref } from 'vue';
+// import { useRouter } from 'vue-router';
+// import backendApi from '~/networkServices/api/backendApi';
+// import useAxiosSetup from '~/networkServices/useAxioSetup';
 
-// Call the setup function during component setup
-useAxiosSetup();
+// // Call the setup function during component setup
+// useAxiosSetup();
 
-const router = useRouter();
-const formData = ref({
-  username: '',
-  password: '',
-});
+// const router = useRouter();
+// const formData = ref({
+//   username: '',
+//   password: '',
+// });
 
-const error = ref(null);
+// const error = ref(null);
 
-const handleSubmit = async () => {
-  try {
-    const response = await backendApi.post('/users/login', {
-      username: formData.username,
-      password: formData.password,
-    });
+// const handleSubmit = async () => {
+//   try {
+//     const response = await backendApi.post('/users/login', {
+//       username: formData.username,
+//       password: formData.password,
+//     });
 
-    console.log(response.data);
+//     console.log(response.data);
 
-    // Check if the login was successful based on your API response
-    if (response.data.success) {
-      // You can dispatch Vuex actions here if needed
-      // store.dispatch('login', { username: formData.username, password: formData.password });
+//     // Check if the login was successful based on your API response
+//     if (response.data.success) {
+//       // You can dispatch Vuex actions here if needed
+//       // store.dispatch('login', { username: formData.username, password: formData.password });
       
-      router.push('/admin');
-    } else {
-      // Display an error message
-      error.value = 'Invalid username or password';
-    }
-  } catch (error) {
-    console.error('Error during login:', error);
-    error.value = 'An error occurred during login';
-  }
-};
+//       router.push('/admin');
+//     } else {
+//       // Display an error message
+//       error.value = 'Invalid username or password';
+//     }
+//   } catch (error) {
+//     console.error('Error during login:', error);
+//     error.value = 'An error occurred during login';
+//   }
+// };
 </script>
 
 
